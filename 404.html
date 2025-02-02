@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            font-size: 6rem;
+            color: #FF6B35;
+            margin-bottom: 1rem;
+            position: relative;
+            animation: glitch 1s infinite;
+        }
+        p {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+        a {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: #FF6B35;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s;
+        }
+        a:hover {
+            background-color: #FF9F1C;
+        }
+
+        @keyframes glitch {
+            0% {
+                clip: rect(44px, 9999px, 56px, 0);
+                transform: skew(0.33deg);
+            }
+            10% {
+                clip: rect(8px, 9999px, 26px, 0);
+                transform: skew(0.47deg);
+            }
+            20% {
+                clip: rect(53px, 9999px, 24px, 0);
+                transform: skew(0.79deg);
+            }
+            30% {
+                clip: rect(67px, 9999px, 15px, 0);
+                transform: skew(0.56deg);
+            }
+            40% {
+                clip: rect(99px, 9999px, 18px, 0);
+                transform: skew(0.85deg);
+            }
+            50% {
+                clip: rect(75px, 9999px, 99px, 0);
+                transform: skew(0.93deg);
+            }
+            60% {
+                clip: rect(26px, 9999px, 12px, 0);
+                transform: skew(0.57deg);
+            }
+            70% {
+                clip: rect(7px, 9999px, 89px, 0);
+                transform: skew(0.44deg);
+            }
+            80% {
+                clip: rect(29px, 9999px, 91px, 0);
+                transform: skew(0.99deg);
+            }
+            90% {
+                clip: rect(70px, 9999px, 21px, 0);
+                transform: skew(0.47deg);
+            }
+            100% {
+                clip: rect(41px, 9999px, 36px, 0);
+                transform: skew(0.99deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <p>Oops! Halaman yang Anda cari tidak ditemukan.</p>
+        <a href="index.html">Kembali ke Beranda</a>
+    </div>
+</body>
+</html>

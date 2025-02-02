@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --primary: #FF6B35;
+            --secondary: #FF9F1C;
+            --accent: #2EC4B6;
+            --text: #333333;
+        }
+
+        body {
+            background-color: #FFF5E6;
+            color: var(--text);
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        .header {
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+    
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff6b35;
+        }
+    
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+    
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+    
+        .nav-link:hover {
+            color: #ff6b35;
+        }
+    
+        .btn-primary {
+            background: #ff6b35;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+    
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 2rem;
+        }
+    
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            right: 5%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .contact-section {
+            padding: 2rem;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            width: 100%;
+            padding: 2rem;
+        }
+
+        .contact-info {
+            width: 100%;
+        }
+
+        .contact-title {
+            font-size: 2.5rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .contact-description {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: #f8f8f8;
+            border-radius: 12px;
+            width: 100%;
+        }
+
+        .contact-detail-icon {
+            min-width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .contact-detail-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-detail-text p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .contact-form {
+            width: 100%;
+            margin-top: 2rem;
+            background: #f8f8f8;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        textarea.form-input {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--secondary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            margin-top: 2rem;
+        }
+
+        /* Tablet Responsive */
+        @media (max-width: 768px) {
+            .contact-section {
+                padding: 1rem;
+            }
+            
+            .contact-container {
+                padding: 1.5rem;
+            }
+
+            .contact-title {
+                font-size: 2rem;
+                text-align: center;
+            }
+
+            .contact-description {
+                text-align: center;
+            }
+
+            .contact-form {
+                margin-top: 3rem;
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 480px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .mobile-nav.show {
+                display: flex;
+            }
+
+            .contact-section {
+                padding: 1rem;
+            }
+
+            .contact-container {
+                padding: 1rem;
+                border-radius: 15px;
+            }
+
+            .contact-title {
+                font-size: 1.75rem;
+            }
+
+            .contact-detail {
+                padding: 1rem;
+            }
+
+            .contact-detail-icon {
+                min-width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .contact-form {
+                padding: 1rem;
+            }
+
+            .form-label {
+                font-size: 1rem;
+            }
+
+            .form-input {
+                padding: 0.875rem;
+                font-size: 1rem;
+            }
+
+            .submit-btn {
+                padding: 1rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Small Mobile Responsive */
+        @media (max-width: 360px) {
+            .contact-container {
+                margin: 0;
+                width: 100%;
+                min-width: 320px;
+            }
+
+            .contact-title {
+                font-size: 1.5rem;
+            }
+
+            .contact-description {
+                font-size: 0.95rem;
+            }
+
+            .contact-detail-text h4 {
+                font-size: 1rem;
+            }
+
+            .contact-detail-text p {
+                font-size: 0.9rem;
+            }
+
+            .form-input {
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Sago Bliss</div>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="about-us.html" class="nav-link">About us</a>
+            <a href="contact.html" class="nav-link">Contact us</a>
+            <a href="checkout.html" class="btn-primary">Check Out</a>
+        </nav>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <nav class="mobile-nav" id="mobile-nav">
+            <a href="index.html">Home</a>
+            <a href="about-us.html">About us</a>
+            <a href="contact.html">Contact us</a>
+            <a href="checkout.html">Check Out</a>
+        </nav>
+    </header>
+
+    <section class="contact-section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2 class="contact-title">Get in Touch</h2>
+                <p class="contact-description">Have questions about our products or services? We're here to help you and answer any questions you might have.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">📍</div>
+                        <div class="contact-detail-text">
+                            <h4>Location</h4>
+                            <p>Bambu Apus, Jakarta</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">📞</div>
+                        <div class="contact-detail-text">
+                            <h4>Phone Number</h4>
+                            <p>+62 895 0362 3465</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">✉️</div>
+                        <div class="contact-detail-text">
+                            <h4>Email Address</h4>
+                            <p>sagobliss@contact.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" class="form-input" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" id="phone" class="form-input" placeholder="Enter your phone number" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" class="form-input" placeholder="Write your message here..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Copyright ©by Ilham panji wibowo</p>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var message = document.getElementById('message').value;
+            var whatsappUrl = `https://wa.me/6289503623465?text=Name:%20${name}%0AEmail:%20${email}%0APhone:%20${phone}%0AMessage:%20${message}`;
+            window.open(whatsappUrl, '_blank');
+        });
+
+        function toggleMenu() {
+            document.getElementById("mobile-nav").classList.toggle("show");
+        }
+    </script>
+</body>
+</html>

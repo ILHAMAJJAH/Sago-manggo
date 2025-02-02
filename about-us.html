@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Sago Bliss</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --primary: #FF6B35;
+            --secondary: #FF9F1C;
+            --accent: #2EC4B6;
+            --text: #333333;
+        }
+
+        body {
+            background-color: #FFFFFF;
+            color: var(--text);
+        }
+
+        /* Header styles - keeping consistent with main page */
+        .header {
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          }
+    
+          .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff6b35;
+          }
+    
+          .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+          }
+    
+          .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+          }
+    
+          .nav-link:hover {
+            color: #ff6b35;
+          }
+    
+          .btn-primary {
+            background: #ff6b35;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+          }
+    
+          .btn-primary:hover {
+            background: #ff9f1c;
+          }
+    
+          .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 2rem;
+          }
+    
+          .mobile-nav {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            right: 5%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            padding: 1rem;
+            border-radius: 10px;
+          }
+    
+          .mobile-nav a {
+            padding: 10px 0;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            border-bottom: 1px solid #ddd;
+          }
+    
+          .mobile-nav a:last-child {
+            border-bottom: none;
+          }
+    
+          @media (max-width: 700px) {
+            .nav-menu {
+              display: none;
+            }
+    
+            .hamburger {
+              display: block;
+            }
+    
+            .mobile-nav.show {
+              display: flex;
+            }
+          }
+
+        /* About section styles */
+        .about-hero {
+            background: linear-gradient(45deg, #FFF5EB, #FFF);
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .about-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        /* Story section */
+        .story-section {
+            padding: 4rem 5%;
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .story-content {
+            flex: 1;
+        }
+
+        .story-image {
+            flex: 1;
+        }
+
+        .story-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .story-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Ingredients section */
+        .ingredients-section {
+            padding: 4rem 5%;
+            background: #F9F9F9;
+        }
+
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .ingredient-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .ingredient-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .ingredient-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .ingredient-desc {
+            color: #666;
+            line-height: 1.4;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .story-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .ingredients-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 2rem auto 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Sago Bliss</div>
+        <nav class="nav-menu">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about-us.html" class="nav-link">About us</a>
+          <a href="contact.html" class="nav-link">Contact us</a>
+          <a href="checkout.html" class="btn-primary">Check Out</a>
+        </nav>
+        <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+        <nav class="mobile-nav" id="mobile-nav">
+          <a href="index.html">Home</a>
+          <a href="about-us.html">About us</a>
+          <a href="contact.html">Contact us</a>
+          <a href="checkout.html">Check Out</a>
+        </nav>
+      </header>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <h1 class="about-title">About Sago Bliss</h1>
+        <p class="about-subtitle">Dedicated to bringing you the most authentic and refreshing Sago drinks, made with love and the finest ingredients.</p>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="story-content">
+            <h2 class="section-title">Our Story</h2>
+            <p class="story-text">Founded in 2020, Sago Bliss started with a simple mission: to bring the authentic taste of traditional sago drinks to modern food lovers. Our journey began in a small kitchen, experimenting with various ingredients and recipes passed down through generations.</p>
+            <p class="story-text">Today, we're proud to serve thousands of customers who have made our drinks a part of their daily routine. Every drink is carefully crafted using traditional methods combined with modern techniques to ensure the perfect blend of flavors.</p>
+        </div>
+        <div class="story-image">
+            <img src="./img/Sago-Home.png" alt="Sago Bliss Story">
+        </div>
+    </section>
+
+    <!-- Ingredients Section -->
+    <section class="ingredients-section">
+        <h2 class="section-title" style="text-align: center;">Our Premium Ingredients</h2>
+        <div class="ingredients-grid">
+            <div class="ingredient-card">
+                <div class="ingredient-icon">🌴</div>
+                <h3 class="ingredient-name">Premium Sago Pearls</h3>
+                <p class="ingredient-desc">Sourced from the finest tapioca starch, our sago pearls are perfectly chewy and naturally gluten-free.</p>
+            </div>
+            <div class="ingredient-card">
+                <div class="ingredient-icon">🥥</div>
+                <h3 class="ingredient-name">Fresh Coconut Milk</h3>
+                <p class="ingredient-desc">Made fresh daily from selected coconuts, providing rich, creamy texture to our drinks.</p>
+            </div>
+            <div class="ingredient-card">
+                <div class="ingredient-icon">🍯</div>
+                <h3 class="ingredient-name">Palm Sugar</h3>
+                <p class="ingredient-desc">Traditional palm sugar that adds natural sweetness and authentic flavor to our drinks.</p>
+            </div>
+            <div class="ingredient-card">
+                <div class="ingredient-icon">🌿</div>
+                <h3 class="ingredient-name">Pandan Leaves</h3>
+                <p class="ingredient-desc">Fresh pandan leaves for natural coloring and aromatic flavor enhancement.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleMenu() {
+          document.getElementById("mobile-nav").classList.toggle("show");
+        }
+      </script>
+</body>
+</html>

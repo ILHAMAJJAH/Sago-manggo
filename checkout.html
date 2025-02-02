@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout - Sago Bliss</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
+      :root {
+        --primary: #ff6b35;
+        --secondary: #ff9f1c;
+        --background: #fff5e6;
+        --text: #333333;
+      }
+
+      body {
+        background-color: var(--background);
+        color: var(--text);
+      }
+
+      /* Header styles */
+      .header {
+        padding: 1rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #ffffff;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #ff6b35;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-link:hover {
+        color: #ff6b35;
+      }
+
+      .btn-primary {
+        background: #ff6b35;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 25px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .btn-primary:hover {
+        background: #ff9f1c;
+      }
+
+      .hamburger {
+        display: none;
+        cursor: pointer;
+        font-size: 2rem;
+      }
+
+      .mobile-nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 5%;
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 200px;
+        padding: 1rem;
+        border-radius: 10px;
+      }
+
+      .mobile-nav a {
+        padding: 10px 0;
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .mobile-nav a:last-child {
+        border-bottom: none;
+      }
+
+      @media (max-width: 700px) {
+        .nav-menu {
+          display: none;
+        }
+
+        .hamburger {
+          display: block;
+        }
+
+        .mobile-nav.show {
+          display: flex;
+        }
+      }
+
+      .checkout-section {
+        padding: 4rem 5%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .checkout-container {
+        width: 100%;
+        max-width: 600px;
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .form-label {
+        font-weight: 600;
+      }
+
+      .form-input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        font-size: 1rem;
+      }
+
+      .checkout-summary {
+        background: var(--background);
+        padding: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .summary-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        font-weight: 500;
+      }
+
+      .total {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--primary);
+        text-align: right;
+      }
+
+      .submit-btn {
+        background: var(--primary);
+        color: white;
+        padding: 1rem;
+        border: none;
+        border-radius: 25px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-align: center;
+      }
+
+      .submit-btn:hover {
+        background: var(--secondary);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">Sago Bliss</div>
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about-us.html" class="nav-link">About us</a>
+        <a href="contact.html" class="nav-link">Contact us</a>
+        <a href="checkout.html" class="btn-primary">Check Out</a>
+      </nav>
+      <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+      <nav class="mobile-nav" id="mobile-nav">
+        <a href="index.html">Home</a>
+        <a href="about-us.html">About us</a>
+        <a href="contact.html">Contact us</a>
+        <a href="checkout.html">Check Out</a>
+      </nav>
+    </header>
+
+    <section class="checkout-section">
+      <div class="checkout-container">
+        <div class="form-group">
+          <label for="name" class="form-label">Full Name</label>
+          <input
+            type="text"
+            id="name"
+            class="form-input"
+            placeholder="Enter your full name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="address" class="form-label">Delivery Address</label>
+          <input
+            type="text"
+            id="address"
+            class="form-input"
+            placeholder="Enter your address"
+          />
+        </div>
+        <div class="form-group">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input
+            type="tel"
+            id="phone"
+            class="form-input"
+            placeholder="Enter your phone number"
+          />
+        </div>
+        <div class="form-group">
+          <label for="payment" class="form-label">Payment Method</label>
+          <select id="payment" class="form-input">
+            <option value="qris">QRIS</option>
+            <option value="bank-transfer">Bank Transfer</option>
+            <option value="cod">Cash on Delivery</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="quantity" class="form-label">Quantity</label>
+          <input
+            type="number"
+            id="quantity"
+            class="form-input"
+            value="1"
+            min="1"
+            oninput="updateTotal()"
+          />
+        </div>
+        <div class="checkout-summary">
+          <h2>Order Summary</h2>
+          <br>
+          <div class="summary-item">
+            <p>Mango Sago</p>
+            <p id="price">Rp 15,000</p>
+          </div>
+          <div class="total">Total: <span id="total">Rp 15,000</span></div>
+        </div>
+        <button type="submit" class="submit-btn" onclick="sendToWhatsApp()">
+          Place Order
+        </button>
+      </div>
+    </section>
+
+    <script>
+      function updateTotal() {
+        let quantity = document.getElementById("quantity").value;
+        let price = 15000;
+        let total = quantity * price;
+        document.getElementById(
+          "total"
+        ).innerText = `Rp ${total.toLocaleString()}`;
+      }
+
+      function sendToWhatsApp() {
+        let name = document.getElementById("name").value;
+        let address = document.getElementById("address").value;
+        let phone = document.getElementById("phone").value;
+        let payment = document.getElementById("payment").value;
+        let quantity = document.getElementById("quantity").value;
+        let total = document.getElementById("total").innerText;
+
+        if (name && address && phone && payment && quantity) {
+          let message = `Order Details:\nName: ${name}\nAddress: ${address}\nPhone: ${phone}\nPayment: ${payment}\nQuantity: ${quantity}\nTotal: ${total}`;
+          let url = `https://wa.me/+6281384305462?text=${encodeURIComponent(
+            message
+          )}`;
+          window.open(url, "_blank");
+        } else {
+          alert("Please fill in all fields before placing the order.");
+        }
+      }
+
+      function toggleMenu() {
+        document.getElementById("mobile-nav").classList.toggle("show");
+      }
+    </script>
+  </body>
+</html>

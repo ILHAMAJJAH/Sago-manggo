@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sago Bliss - Fresh Drink Delivery</title>
+    <style>
+      /* Reset and base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
+      :root {
+        --primary: #ff6b35;
+        --secondary: #ff9f1c;
+        --accent: #2ec4b6;
+        --text: #333333;
+        --background: #f9f9f9;
+      }
+
+      body {
+        background-color: #ffffff;
+        color: var(--text);
+      }
+
+      /* Header styles */
+      .header {
+        padding: 1rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #ffffff;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #ff6b35;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-link:hover {
+        color: #ff6b35;
+      }
+
+      .btn-primary {
+        background: #ff6b35;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 25px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .btn-primary:hover {
+        background: #ff9f1c;
+      }
+
+      .hamburger {
+        display: none;
+        cursor: pointer;
+        font-size: 2rem;
+      }
+
+      .mobile-nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 5%;
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 200px;
+        padding: 1rem;
+        border-radius: 10px;
+      }
+
+      .mobile-nav a {
+        padding: 10px 0;
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .mobile-nav a:last-child {
+        border-bottom: none;
+      }
+
+      @media (max-width: 700px) {
+        .nav-menu {
+          display: none;
+        }
+
+        .hamburger {
+          display: block;
+        }
+
+        .mobile-nav.show {
+          display: flex;
+        }
+      }
+
+      /* Hero section - Updated */
+      .hero {
+        display: flex;
+        align-items: center;
+        padding: 4rem 5%;
+        background: linear-gradient(45deg, #fff5eb, #fff);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-content {
+        flex: 1;
+        max-width: 500px;
+        padding-right: 2rem;
+      }
+
+      .hero-title {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+      }
+
+      .hero-text {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        color: #666;
+      }
+
+      .hero-image {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .hero-image img {
+        width: 100%;
+        max-width: 500px;
+        object-fit: cover;
+      }
+
+      /* Menu section - Updated */
+      .menu-section {
+        padding: 4rem 5%;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .menu-grid {
+        max-width: 300px;
+        margin: 0 auto;
+      }
+
+      .menu-item {
+        background: #ffffff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .menu-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .menu-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .menu-item-content {
+        padding: 1.5rem;
+      }
+
+      .menu-item-title {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .menu-item-price {
+        color: var(--primary);
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      /* Footer info */
+      .footer-info {
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem 5%;
+        background: var(--background);
+        margin-top: 4rem;
+        border-top: 1px solid #ddd;
+      }
+
+      .info-item {
+        background: white;
+        padding: 1rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 30%;
+      }
+
+      .info-item h4 {
+        margin-bottom: 0.5rem;
+        color: var(--primary);
+      }
+
+      .info-item p {
+        margin-bottom: 0.5rem;
+        text-align: center;
+      }
+
+      .info-item i {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary);
+      }
+
+      @media (max-width: 768px) {
+        .hero {
+          flex-direction: column;
+          text-align: center;
+          padding: 2rem 5%;
+        }
+
+        .hero-content {
+          margin-bottom: 2rem;
+          padding-right: 0;
+        }
+
+        .hero-image {
+          justify-content: center;
+        }
+
+        .nav-menu {
+          display: none;
+        }
+
+        .menu-grid {
+          max-width: 280px;
+        }
+
+        .footer-info {
+          flex-direction: column;
+          gap: 2rem;
+        }
+
+        .info-item {
+          width: 100%;
+        }
+      }
+
+      /* New Banner Section Styles */
+      .banner-section {
+        padding: 2rem 5%;
+        background-color: #fff5e6;
+        margin-top: 4rem;
+      }
+
+      .banner-container {
+        background: white;
+        border-radius: 30px;
+        padding: 3rem 5%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .banner-images {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        position: relative;
+      }
+
+      .banner-images img {
+        max-width: 100%;
+        height: auto; /* Jaga proporsi gambar */
+      }
+
+      .banner-content {
+        flex: 1;
+        padding-left: 2rem;
+      }
+
+      .banner-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        color: var(--text);
+        max-width: 400px;
+      }
+
+      .banner-cta {
+        background: #ffb800;
+        color: white;
+        padding: 0.75rem 2rem;
+        border-radius: 25px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-transform: uppercase;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .banner-cta:hover {
+        background: #ff9f1c;
+      }
+
+      .banner-cta::after {
+        content: "⟶";
+        font-size: 1.2em;
+      }
+
+      @media (max-width: 768px) {
+        .banner-container {
+          flex-direction: column;
+          text-align: center;
+          padding: 2rem;
+        }
+
+        .banner-images {
+          width: 100%;
+          height: 200px;
+        }
+
+        .banner-content {
+          padding-left: 0;
+          padding-top: 2rem;
+        }
+
+        .banner-title {
+          margin: 1rem auto 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">Sago Bliss</div>
+      <nav class="nav-menu">
+        <a href="#" class="nav-link">Home</a>
+        <a href="about-us.html" class="nav-link">About us</a>
+        <a href="contact.html" class="nav-link">Contact us</a>
+        <a href="checkout.html" class="btn-primary">Check Out</a>
+      </nav>
+      <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+      <nav class="mobile-nav" id="mobile-nav">
+        <a href="#">Home</a>
+        <a href="about-us.html">About us</a>
+        <a href="contact.html">Contact us</a>
+        <a href="checkout.html">Check Out</a>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Your Favorite Drinks Delivered Cold & Fresh</h1>
+        <p class="hero-text">
+          Healthy drinking starts from a pure soul, like passion, shopping &
+          caring, so you can make a refreshing drink.
+        </p>
+        <a href="checkout.html" class="btn-primary">Check Out</a>
+      </div>
+      <div class="hero-image">
+        <img src="./img/Sago-home.png" alt="Fresh food bowl" />
+      </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section">
+      <h2 class="section-title">Explore Our Best Menu</h2>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="./img/Sago-menu.png" alt="Bowl Ramen" />
+          <div class="menu-item-content">
+            <h3 class="menu-item-title">Manggo Sago</h3>
+            <p class="menu-item-price">Rp 15.000</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- New Banner Section -->
+    <section class="banner-section">
+      <div class="banner-container">
+        <div class="banner-images">
+          <img src="./img/Mangga.png" alt="Mango splash" />
+        </div>
+        <div class="banner-content">
+          <h2 class="banner-title">Cocok buat kamu yang males makan buah</h2>
+          <a href="checkout.html" class="banner-cta">Pesan Sekarang</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Info -->
+    <footer class="footer-info">
+      <div class="info-item">
+        <h4>Working Hours</h4>
+        <p>Today 10:00 am - 7:00 pm</p>
+      </div>
+      <div class="info-item">
+        <h4>Get Directions</h4>
+        <p>Wayka West House 100</p>
+      </div>
+      <div class="info-item">
+        <h4>Call Online</h4>
+        <p>+62 895 0362 3465</p>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMenu() {
+        document.getElementById("mobile-nav").classList.toggle("show");
+      }
+    </script>
+  </body>
+</html>
