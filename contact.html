@@ -447,6 +447,11 @@
     </footer>
 
     <script>
+
+        function toggleMenu() {
+            document.getElementById("mobile-nav").classList.toggle("show");
+        }
+        
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             var name = document.getElementById('name').value;
@@ -457,9 +462,6 @@
             window.open(whatsappUrl, '_blank');
         });
 
-        function toggleMenu() {
-            document.getElementById("mobile-nav").classList.toggle("show");
-        }
     </script>
 </body>
 </html>
