@@ -34,33 +34,32 @@
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-        }
+          }
     
-        .logo {
+          .logo {
             font-size: 1.5rem;
             font-weight: 700;
             color: #ff6b35;
-        }
+          }
     
-        .nav-menu {
+          .nav-menu {
             display: flex;
             gap: 2rem;
             align-items: center;
-        }
+          }
     
-        .nav-link {
+          .nav-link {
             text-decoration: none;
             color: #333;
             font-weight: 500;
             transition: color 0.3s;
-        }
+          }
     
-        .nav-link:hover {
+          .nav-link:hover {
             color: #ff6b35;
-        }
+          }
     
-        .btn-primary {
+          .btn-primary {
             background: #ff6b35;
             color: white;
             padding: 0.75rem 1.5rem;
@@ -68,17 +67,19 @@
             border: none;
             cursor: pointer;
             transition: background-color 0.3s;
-            text-decoration: none;
-            white-space: nowrap;
-        }
+          }
     
-        .hamburger {
+          .btn-primary:hover {
+            background: #ff9f1c;
+          }
+    
+          .hamburger {
             display: none;
             cursor: pointer;
             font-size: 2rem;
-        }
+          }
     
-        .mobile-nav {
+          .mobile-nav {
             display: none;
             flex-direction: column;
             position: absolute;
@@ -89,7 +90,33 @@
             width: 200px;
             padding: 1rem;
             border-radius: 10px;
-        }
+          }
+    
+          .mobile-nav a {
+            padding: 10px 0;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            border-bottom: 1px solid #ddd;
+          }
+    
+          .mobile-nav a:last-child {
+            border-bottom: none;
+          }
+    
+          @media (max-width: 700px) {
+            .nav-menu {
+              display: none;
+            }
+    
+            .hamburger {
+              display: block;
+            }
+    
+            .mobile-nav.show {
+              display: flex;
+            }
+          }
 
         .contact-section {
             padding: 2rem;
